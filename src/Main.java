@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -24,6 +25,28 @@ public class Main {
                 double weight = Double.parseDouble(input);
                 System.out.println("Cost: " + PostageCalculator.calculatePostage(zip1, zip2, weight));
             } else if (choice.equals("2")){
+                System.out.print("How many packages would you like to simulate? ");
+                int num = sc.nextInt();
+                sc.nextLine();
+                ArrayList<Package> packages = new ArrayList<Package>();
+                while (num > 0){
+                    packages.add(Package.generatePackage());
+                    num--;
+                }
+                double totalCost = 0.0;
+                System.out.println("Randomly generated packages info: ");
+                for(int i = 0; i < packages.size(); i++){
+                    System.out.println("Package " + (i + 1) + ": ________________________________________________");
+                    System.out.println("Origin address: " + packages.get(i).getOrigin().toString());
+                    System.out.println("Destination address: " + packages.get(i).getDestination().toString());
+                    System.out.println("Cost: " + PostageCalculator.calculatePostage(packages.get(i)));
+                    totalCost += PostageCalculator.calculatePostage(packages.get(i));
+                }
+                System.out.println("________________________________________________");
+                System.out.println("Total Cost of all packages: " + (int)((totalCost + 0.005) * 100) / 100.0);
+                System.out.println("________________________________________________");
+                System.out.println("Click enter to return to menu");
+                sc.nextLine();
 
             } else if (choice.equals("3")){
                 exit = true;
@@ -31,6 +54,5 @@ public class Main {
                 System.out.println("Invalid choice!");
             }
         }
-
     }
 }

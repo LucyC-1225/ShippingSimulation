@@ -55,7 +55,11 @@ public class Address {
         if (!(aptNum.equals(""))){
             str += " Apt " + aptNum;
         }
-        str += ", " + city + ", " + state + " " + zipCode;
+        String modifiedZip = zipCode + "";
+        while (modifiedZip.length() != 5){
+            modifiedZip = "0" + modifiedZip;
+        }
+        str += ", " + city + ", " + state + " " + modifiedZip;
         return str;
     }
 }
