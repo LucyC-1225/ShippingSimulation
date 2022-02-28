@@ -37,7 +37,7 @@ public class Package {
 
         int zip1 = zipArr[rand(0, 49)];
         int zip2 = zipArr[rand(0, 49)];
-        double weight = Math.random() * 80 + 0.1;
+        double weight = Math.random() * 30 + 0.1;
         Address origin = new Address("123", "Random Street", "3C", "City", "State", zip1);
         Address destination = new Address("123", "Random Street", "3C", "City", "State", zip2);
         double height = Math.random() * 20 + 2;
